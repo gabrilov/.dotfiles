@@ -3,4 +3,10 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
 profiles:
+  sobremesa:
+    dotfiles:
+    - f_zshrc

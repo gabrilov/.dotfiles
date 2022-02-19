@@ -1,0 +1,69 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+
+
+# Color para ls
+if ${use_color} ; then
+	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
+	if type -p dircolors >/dev/null ; then
+		if [[ -f ~/.dir_colors ]] ; then
+			eval $(dircolors -b ~/.dir_colors)
+		elif [[ -f /etc/DIR_COLORS ]] ; then
+			eval $(dircolors -b /etc/DIR_COLORS)
+		fi
+	fi
+fi
+
+# export LS_COLORS=$LS_COLORS
+
+# Use powerline
+USE_POWERLINE="true"
+# Source manjaro-zsh-configuration
+if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+  source /usr/share/zsh/manjaro-zsh-config
+fi
+# Use manjaro zsh prompt
+if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+  source /usr/share/zsh/manjaro-zsh-prompt
+fi
+
+
+
+# Alias
+alias ls="lsd"
+alias ll="lsd -lh"
+alias lla="lsd -lah"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias instalar="sudo pacman -S"
+alias arriba="sudo systemctl start"
+alias abajo="sudo systemctl stop"
+alias estado="sudo systemctl status"
+alias buscar="find . -iname"
+alias procid="xprop _NET_WM_PID | cut -d' ' -f3"
+alias vi="nvim"
+alias vim="nvim"
+alias cat="bat"
+alias dotdrop='~/.dotfiles/dotdrop.sh'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Variables de entorno
+export EDITOR=nvim
+export PATH="$PATH:/home/gabi/.flutter/flutter/bin"
+
+# Variable para arreglar problema con TOR
+# export QT_QPA_PLATFORM=wayland
+#
+# Problema Firefox is alredy running
+# export MOZ_DBUS_REMOTE = 1
+
+# Golang
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
