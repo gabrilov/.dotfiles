@@ -6,7 +6,11 @@ dotfiles:
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
+  f_vimrc:
+    src: vimrc
+    dst: ~/.vimrc
 profiles:
   sobremesa:
     dotfiles:
     - f_zshrc
+    - f_vimrc
